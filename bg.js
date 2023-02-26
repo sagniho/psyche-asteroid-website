@@ -1,38 +1,34 @@
-//updates
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+// bg.js
 
+// Set up the scene, camera and renderer
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
-
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({alpha: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-// Create cube map texture
-var textureLoader = new THREE.CubeTextureLoader();
-textureLoader.setPath('https://threejs.org/examples/textures/cube/skybox/');
-var texture = textureLoader.load(['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg']);
-scene.background = texture;
+// Create a star field
+var starGeometry = new THREE.Geometry();
+for (var i = 0; i < 1000; i++) {
+  var star = new THREE.Vector3(
+    Math.random() * 2000 - 1000,
+    Math.random() * 2000 - 1000,
+    Math.random() * 2000 - 1000
+  );
+  starGeometry.vertices.push(star);
+}
+var starMaterial = new THREE.PointsMaterial({color: 0xffffff});
+var starField = new THREE.Points(starGeometry, starMaterial);
+scene.add(starField);
 
-// Create cube mesh
-var geometry = new THREE.BoxGeometry(100, 100, 100);
-var material = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.BackSide });
-var mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
+// Add a directional light to the scene
+var light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(1, 1, 1);
+scene.add(light);
 
+// Render the scene
 function animate() {
   requestAnimationFrame(animate);
-  mesh.rotation.y += 0.001;
   renderer.render(scene, camera);
 }
-
 animate();
-
-window.addEventListener('resize', function() {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  renderer.setSize(width, height);
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-});
