@@ -36,32 +36,14 @@
         z-index: 999;
       }
 
-        /* Sticky navbar */
-        .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: #333;
-        z-index: 1;
-      }
-
-      .navbar a {
-        float: left;
-        display: block;
+      nav a {
         color: white;
-        text-align: center;
-        padding: 14px 16px;
         text-decoration: none;
-      }
-
-      .navbar a:hover {
-        background-color: #ddd;
-        color: black;
+        margin-right: 1rem;
       }
 
       main {
         display: flex;
-        background-color: transparent;
         justify-content: center;
         align-items: center;
         height: 90vh;
@@ -97,7 +79,9 @@
       <a href="#psyche-asteroid">Psyche Asteroid</a>
       <a href="#psyche-satellite">Psyche Satellite</a>
     </nav>
-    <div id="canvas-container"></div>
+    <div id="canvas-container">
+      <canvas></canvas>
+    </div>
     <main>
       <section id="psyche-mission">
         <h2>Psyche Mission</h2>
@@ -123,20 +107,23 @@
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({ alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+      document.getElementById('canvas-container').appendChild(renderer.domElement);
     
       // Create a star field
       const starGeometry = new THREE.BufferGeometry();
       const positions = [];
-      for (let i = 0; i < 1000; i++) {
-        positions.push(
-          Math.random() * 2000 - 1000,
-          Math.random() * 2000 - 1000,
-          Math.random() * 2000 - 1000
-        );
+      const colors = [];
+      const starCount = 1000;
+      for (let i = 0; i < starCount; i++) {
+        const x = (Math.random() - 0.5) * 2000;
+        const y = (Math.random() - 0.5) * 2000;
+        const z = (Math.random() - 0.5) * 2000;
+        positions.push(x, y, z);
+        colors.push(Math.random(), Math.random(), Math.random());
       }
       starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-      const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+      starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const starMaterial = new THREE.PointsMaterial({ size: 20, vertexColors: true });
       const starField = new THREE.Points(starGeometry, starMaterial);
       scene.add(starField);
     
@@ -158,8 +145,6 @@
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
       });
-    
-     </script>
-    </body>
-  </html>
-    
+    </script>
+  </body>
+</html>
