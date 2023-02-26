@@ -1,161 +1,93 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Psyche Mission</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      #canvas-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
+<head>
+	<title>Psyche Asteroid</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
 
-      canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+		nav {
+			background-color: rgba(255, 255, 255, 0.5);
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 10px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+		}
 
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 10vh;
-        background-color: #222;
-        color: white;
-        font-size: 1.5rem;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 999;
-      }
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
 
-      nav a {
-        color: white;
-        text-decoration: none;
-        margin-right: 1rem;
-      }
+		nav ul li a {
+			color: #333;
+			text-decoration: none;
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
 
-      main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90vh;
-      }
+		#psyche-container {
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
-      section {
-        padding: 2rem;
-        text-align: center;
-      }
+		canvas {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Psyche</a></li>
+			<li><a href="#">Interact with Psyche</a></li>
+		</ul>
+	</nav>
 
-      section h2 {
-        margin-bottom: 2rem;
-      }
+	<section id="psyche-container">
+		<model-viewer src="psyche.glb" alt="Psyche asteroid in 3D" ar ar-modes="webxr scene-viewer quick-look" environment-image="3d-space-background.jpg" camera-controls></model-viewer>
+	</section>
 
-      footer {
-        text-align: center;
-        background-color: #222;
-        color: white;
-        padding: 2rem;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
+	<canvas id="background"></canvas>
 
-      footer p {
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <a href="#psyche-mission">Psyche Mission</a>
-      <a href="#psyche-asteroid">Psyche Asteroid</a>
-      <a href="#psyche-satellite">Psyche Satellite</a>
-    </nav>
-    <div id="canvas-container"></div>
-    <main>
-      <section id="psyche-mission">
-        <h2>Psyche Mission</h2>
-        <p>Details about the Psyche Mission</p>
-      </section>
-      <section id="psyche-asteroid">
-        <h2>Psyche Asteroid</h2>
-        <p>Information about the Psyche Asteroid</p>
-      </section>
-      <section id="psyche-satellite">
-        <h2>Psyche Satellite</h2>
-        <p>Details about the Psyche Satellite</p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2023 Psyche Mission</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.135.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-      // Set up the scene, camera, and renderer
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.getElementById('canvas-container').appendChild(renderer.domElement);
-    
-      // Create a star field
-      const starGeometry = new THREE.BufferGeometry();
-      const positions = [];
-      for (let i = 0; i < 10000; i++) {
-        const x = Math.random() * 2000 - 1000;
-        const y = Math.random() * 2000 - 1000;
-        const z = Math.random() * 2000 - 1000;
-        positions.push(x, y, z);
-      }
-      starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-      const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
-      const starField = new THREE.Points(starGeometry, starMaterial);
-      scene.add(starField);
-    
-      // Load the asteroid model
-      const loader = new THREE.GLTFLoader();
-      let asteroid;
-      loader.load('psyche.glb', function(gltf) {
-        asteroid = gltf.scene;
-        asteroid.scale.set(10, 10, 10);
-        asteroid.position.set(0, 0, -1000);
-        scene.add(asteroid);
-      });
-    
-      // Set up the scroll zoom effect
-      let scrollPos = window.scrollY;
-      let speed = 0;
-      function animate() {
-        requestAnimationFrame(animate);
-    
-        // Zoom the camera in and out based on scroll position
-        const targetZoom = THREE.MathUtils.mapLinear(scrollPos, 0, window.innerHeight, 50, 10);
-        camera.position.z += (targetZoom - camera.position.z) * 0.1;
-    
-        // Move the asteroid towards the camera
-        if (asteroid) {
-          asteroid.position.z += speed;
-          speed += 0.1;
-        }
-    
-        renderer.render(scene, camera);
-      }
-    
-      // Listen for scroll events and update scroll position
-      window.addEventListener('scroll', function() {
-        scrollPos = window.scrollY;
-      });
-    
-      animate();
-    </script>
+	<script src="https://cdn.jsdelivr.net/npm/@google/model-viewer@2.4.0/dist/model-viewer.min.js"></script>
+	<script>
+		// Create a starry background
+		var canvas = document.getElementById("background");
+		var ctx = canvas.getContext("2d");
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		var stars = 100;
+		for (var i = 0; i < stars; i++) {
+			var x = Math.random() * canvas.width;
+			var y = Math.random() * canvas.height;
+			var radius = Math.random() * 1.5;
+
+			ctx.beginPath();
+			ctx.arc(x, y, radius, 0, Math.PI * 2);
+			ctx.fillStyle = "#fff";
+			ctx.fill();
+		}
+	</script>
 </body>
-</html>    
+</html>
