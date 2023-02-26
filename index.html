@@ -2,7 +2,6 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="bg.js"></script>
     <meta charset="UTF-8">
     <title>Psyche Asteroid</title>
     <link rel="stylesheet" href="style.css">
@@ -67,15 +66,16 @@
       document.getElementById('canvas-container').appendChild(renderer.domElement);
 
       // Create a star field
-      var starGeometry = new THREE.Geometry();
+      var starGeometry = new THREE.BufferGeometry();
+      var positions = [];
       for (var i = 0; i < 1000; i++) {
-        var star = new THREE.Vector3(
+        positions.push(
           Math.random() * 2000 - 1000,
           Math.random() * 2000 - 1000,
           Math.random() * 2000 - 1000
         );
-        starGeometry.vertices.push(star);
       }
+      starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
       var starMaterial = new THREE.PointsMaterial({color: 0xffffff});
       var starField = new THREE.Points(starGeometry, starMaterial);
       scene.add(starField);
@@ -92,7 +92,7 @@
       }
       animate();
 
-    </script>
+    </script> 
   </body>
-
-</html>
+  </html>
+  
