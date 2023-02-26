@@ -79,9 +79,7 @@
       <a href="#psyche-asteroid">Psyche Asteroid</a>
       <a href="#psyche-satellite">Psyche Satellite</a>
     </nav>
-    <div id="canvas-container">
-      <canvas></canvas>
-    </div>
+    <div id="canvas-container"></div>
     <main>
       <section id="psyche-mission">
         <h2>Psyche Mission</h2>
@@ -99,7 +97,6 @@
     <footer>
       <p>&copy; 2023 Psyche Mission</p>
     </footer>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
       // Set up the scene, camera, and renderer
@@ -112,39 +109,52 @@
       // Create a star field
       const starGeometry = new THREE.BufferGeometry();
       const positions = [];
-      const colors = [];
-      const starCount = 1000;
-      for (let i = 0; i < starCount; i++) {
-        const x = (Math.random() - 0.5) * 2000;
-        const y = (Math.random() - 0.5) * 2000;
-        const z = (Math.random() - 0.5) * 2000;
+      for (let i = 0; i < 10000; i++) {
+        const x = Math.random() * 2000 - 1000;
+        const y = Math.random() * 2000 - 1000;
+        const z = Math.random() * 2000 - 1000;
         positions.push(x, y, z);
-        colors.push(Math.random(), Math.random(), Math.random());
       }
       starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-      starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-      const starMaterial = new THREE.PointsMaterial({ size: 20, vertexColors: true });
+      const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
       const starField = new THREE.Points(starGeometry, starMaterial);
       scene.add(starField);
     
-      // Add a directional light to the scene
-      const light = new THREE.DirectionalLight(0xffffff, 1);
-      light.position.set(1, 1, 1);
-      scene.add(light);
+      // Load the asteroid model
+      const loader = new THREE.GLTFLoader();
+      let asteroid;
+      loader.load('psyche.glb', function(gltf) {
+        asteroid = gltf.scene;
+        asteroid.scale.set(10, 10, 10);
+        asteroid.position.set(0, 0, -1000);
+        scene.add(asteroid);
+      });
     
-      // Render the scene
+      // Set up the scroll zoom effect
+      let scrollPos = window.scrollY;
+      let speed = 0;
       function animate() {
         requestAnimationFrame(animate);
+    
+        // Zoom the camera in and out based on scroll position
+        const targetZoom = THREE.MathUtils.mapLinear(scrollPos, 0, window.innerHeight, 50, 10);
+        camera.position.z += (targetZoom - camera.position.z) * 0.1;
+    
+        // Move the asteroid towards the camera
+        if (asteroid) {
+          asteroid.position.z += speed;
+          speed += 0.1;
+        }
+    
         renderer.render(scene, camera);
       }
-      animate();
     
-      // Resize the renderer when the window size changes
-      window.addEventListener('resize', function() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+      // Listen for scroll events and update scroll position
+      window.addEventListener('scroll', function() {
+        scrollPos = window.scrollY;
       });
+    
+      animate();
     </script>
-  </body>
-</html>
+</body>
+</html>    
