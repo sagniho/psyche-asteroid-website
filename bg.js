@@ -1,4 +1,4 @@
-// bg.js
+/* bg.js
 
 // Set up the scene, camera and renderer
 var scene = new THREE.Scene();
@@ -32,3 +32,4 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+*/
