@@ -6,16 +6,23 @@
 		body {
 			margin: 0;
 			padding: 0;
+			background-image: url('3d-space-background.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			color: #fff;
 		}
 
 		nav {
-			background-color: rgba(255, 255, 255, 0.5);
+			background-color: transparent;
 			position: fixed;
 			top: 0;
 			left: 0;
 			right: 0;
 			padding: 10px;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+			box-shadow: none;
 		}
 
 		nav ul {
@@ -28,28 +35,44 @@
 		}
 
 		nav ul li a {
-			color: #333;
+			color: #fff;
 			text-decoration: none;
 			font-size: 1.2rem;
 			font-weight: bold;
 		}
 
 		#psyche-container {
-			height: 100vh;
-			width: 100vw;
+			height: calc(100vh - 60px);
 			display: flex;
-			justify-content: center;
+			flex-direction: column;
 			align-items: center;
+			justify-content: center;
+			padding: 40px;
+			text-align: center;
 		}
 
-		canvas {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -1;
+		#psyche-container h1 {
+			font-size: 3rem;
+			margin-bottom: 20px;
+		}
+
+		#psyche-container p {
+			font-size: 1.2rem;
+			margin-bottom: 40px;
+		}
+
+		#interact-link {
+			margin-top: 40px;
+			text-align: center;
+		}
+
+		#psyche-model {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 40px;
+			background-color: rgba(255, 255, 255, 0.8);
+			border-radius: 10px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 		}
 	</style>
 </head>
@@ -63,31 +86,14 @@
 	</nav>
 
 	<section id="psyche-container">
-		<model-viewer src="psyche.glb" alt="Psyche asteroid in 3D" ar ar-modes="webxr scene-viewer quick-look" environment-image="3d-space-background.jpg" camera-controls></model-viewer>
+		<h1>Psyche Asteroid</h1>
+		<p>The Psyche asteroid is a unique space rock that has fascinated astronomers for years. It is believed to be composed primarily of metal, making it different from most other asteroids which are mainly rock or ice.</p>
+		<div id="interact-link"><a href="#">Interact with Psyche</a></div>
+		<div id="psyche-model">
+			<model-viewer src="psyche.glb" alt="Psyche asteroid in 3D" ar ar-modes="webxr scene-viewer quick-look" camera-controls></model-viewer>
+		</div>
 	</section>
 
-	<canvas id="background"></canvas>
-
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.0.2/dist/model-viewer.min.js"></script>
-	<script>
-		// Create a starry background
-		var canvas = document.getElementById("background");
-		var ctx = canvas.getContext("2d");
-
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-
-		var stars = 100;
-		for (var i = 0; i < stars; i++) {
-			var x = Math.random() * canvas.width;
-			var y = Math.random() * canvas.height;
-			var radius = Math.random() * 1.5;
-
-			ctx.beginPath();
-			ctx.arc(x, y, radius, 0, Math.PI * 2);
-			ctx.fillStyle = "#fff";
-			ctx.fill();
-		}
-	</script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.0.2/dist/model-viewer.min.js"></script>
 </body>
 </html>
