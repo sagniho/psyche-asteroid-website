@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>My 3D Space Website</title>
+    <meta charset="UTF-8">
+    <title>Psyche Asteroid</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
+      #canvas-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
       }
     </style>
   </head>
   <body>
     <div id="canvas-container"></div>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#about">About Psyche</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home">
+        <h1>Psyche Asteroid</h1>
+        <p>Welcome to the website about the Psyche Asteroid</p>
+        <!-- Add your 3D object here -->
+      </section>
+      <section id="about">
+        <h2>About Psyche</h2>
+        <p>Information about the Psyche asteroid</p>
+      </section>
+      <section id="mission">
+        <h2>Mission</h2>
+        <p>Details about the Psyche mission</p>
+      </section>
+      <section id="team">
+        <h2>Team</h2>
+        <p>Information about the team behind the mission</p>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Contact information for the team</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Psyche Asteroid</p>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
       var scene = new THREE.Scene();
