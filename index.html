@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Psyche Asteroid</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>My 3D Space Website</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#about">About Psyche</a></li>
-          <li><a href="#mission">Mission</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="home">
-        <h1>Psyche Asteroid</h1>
-        <p>Welcome to the website about the Psyche Asteroid</p>
-        <!-- Add your 3D object here -->
-      </section>
-      <section id="about">
-        <h2>About Psyche</h2>
-        <p>Information about the Psyche asteroid</p>
-      </section>
-      <section id="mission">
-        <h2>Mission</h2>
-        <p>Details about the Psyche mission</p>
-      </section>
-      <section id="team">
-        <h2>Team</h2>
-        <p>Information about the team behind the mission</p>
-      </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Contact information for the team</p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2023 Psyche Asteroid</p>
-    </footer>
+    <div id="canvas-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+      
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById('canvas-container').appendChild(renderer.domElement);
+      
+      var geometry = new THREE.SphereGeometry(100, 32, 32);
+      var material = new THREE.MeshBasicMaterial();
+      material.map = new THREE.TextureLoader().load('https://i.imgur.com/mYJEGZv.jpg');
+      material.side = THREE.BackSide;
+      
+      var mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        mesh.rotation.y += 0.001;
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', function() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      });
+    </script>
   </body>
 </html>
