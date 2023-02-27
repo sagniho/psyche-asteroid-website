@@ -7,9 +7,6 @@
 			margin: 0;
 			padding: 0;
 			background-image: url('3d-space-background.jpeg');
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center;
 			font-family: Arial, sans-serif;
 		}
 
@@ -27,6 +24,7 @@
 			flex-wrap: wrap;
 			justify-content: space-between;
 			align-items: center;
+			padding: 50px;
 		}
 
 		.container img {
@@ -40,10 +38,10 @@
 			font-size: 1.2rem;
 			line-height: 1.5;
 			text-align: justify;
+			color: #fff;
 		}
 
 		.interact {
-			background-color: #000;
 			color: #fff;
 			padding: 50px;
 			text-align: center;
@@ -58,6 +56,8 @@
 			justify-content: center;
 			align-items: center;
 			margin-top: 50px;
+			width: 100%;
+			height: 800px;
 		}
 
 		canvas {
@@ -76,13 +76,13 @@
 
 	<div class="container">
 		<p>Psyche is a metallic asteroid located in the asteroid belt between Mars and Jupiter. It is believed to be the exposed core of a protoplanet that was destroyed by a collision with another object. Psyche is about 226 kilometers (140 miles) in diameter and is made mostly of iron and nickel. It is the most massive metallic M-type asteroid known in the solar system.</p>
-		<img src="psyche.png" alt="Psyche asteroid" title="Psyche asteroid" />
+		<img src="psyche.png" alt="Psyche asteroid" title="Psyche asteroid" style="max-width: 50%; height: auto;">
 	</div>
 
 	<div class="interact">Interact with the Psyche Asteroid yourself!</div>
 
 	<section class="psyche-container">
-		<model-viewer src="psyche.glb" alt="Psyche asteroid in 3D" ar ar-modes="webxr scene-viewer quick-look" camera-controls></model-viewer>
+		<model-viewer src="psyche.glb" alt="Psyche asteroid in 3D" ar ar-modes="webxr scene-viewer quick-look" camera-controls style="width: 100%; height: 100%;"></model-viewer>
 	</section>
 
 	<canvas id="background"></canvas>
