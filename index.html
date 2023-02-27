@@ -71,53 +71,67 @@
         z-index: -1;
       }
 
-      .mythology-section {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 50px;
-      }
+      
+  .mythology-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    color: white;
+  }
 
-      .mythology-section video {
-        max-width: 50%;
-        height: auto;
-      }
+  .mythology-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-      .mythology-section p {
-        flex: 1;
-        padding: 0 20px;
-        font-size: 1.2rem;
-        line-height: 1.5;
-        text-align: justify;
-        color: white;
-      }
+  .mythology-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+  }
 
-      @media screen and (max-width: 768px) {
-        .container {
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
+  .mythology-video {
+    flex: 1;
+  }
 
-        .container img {
-          max-width: 80%;
-        }
+  .mythology-video video {
+    width: 100%;
+    height: auto;
+  }
 
-       .mythology {
-        background-color: #000;
-        padding: 50px;
-      }
+  .mythology-text {
+    flex: 1;
+    padding-left: 50px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: justify;
+  }
 
-      .mythology h2 {
-        color: #fff;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: bold;
-      }
+  @media screen and (max-width: 768px) {
+    /* ... existing media queries ... */
 
+    .mythology-content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-      }
+    .mythology-video,
+    .mythology-text {
+      flex: unset;
+      width: 100%;
+      padding: 0;
+    }
+  }
+   
+
+ 
     </style>
   </head>
 
@@ -164,31 +178,28 @@
      
 
       <div class="mythology-container">
-        <div class="interact">Origins in Greek Mythology</div>
-        <div class="mythology-video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/Gjj_-CPxjCM"
-            title="Psyche - Greek Mythology"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="mythology-text">
-          <p>
-            According to Greek mythology, Psyche was a mortal woman who was so
-            beautiful that she was worshipped as a goddess. She was beloved by
-            the god of love, Eros (also known as Cupid), but their love was not
-            permitted by his mother, the goddess Aphrodite. Psyche was forced to
-            perform several tasks to prove her worthiness to be with Eros,
-            including a journey to the underworld. In the end, the gods granted
-            Psyche immortality so that she could be with Eros forever.
-          </p>
+        <h2>Origins in Greek Mythology</h2>
+        <div class="mythology-content">
+          <div class="mythology-video">
+            <video controls>
+              <source src="psyche-mythology.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="mythology-text">
+            <p>
+              According to Greek mythology, Psyche was a mortal woman who was so
+              beautiful that she was worshipped as a goddess. She was beloved by
+              the god of love, Eros (also known as Cupid), but their love was not
+              permitted by his mother, the goddess Aphrodite. Psyche was forced to
+              perform several tasks to prove her worthiness to be with Eros,
+              including a journey to the underworld. In the end, the gods granted
+              her immortality and allowed her to be with Eros forever.
+            </p>
+          </div>
         </div>
       </div>
-
+      
       
   </body>
   </html>
