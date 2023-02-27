@@ -1,93 +1,184 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Psyche Asteroid</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url('3d-space-background.jpeg');
-			font-family: Arial, sans-serif;
-		}
+  <head>
+    <title>Psyche Asteroid</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url('3d-space-background.jpeg');
+        font-family: Arial, sans-serif;
+      }
 
-		header {
-			background-image: url('3d-space-background.jpeg');
-			color: #fff;
-			padding: 20px;
-			text-align: center;
-			font-size: 2rem;
-			font-weight: bold;
-		}
+      header {
+        background-image: url('3d-space-background.jpeg');
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
 
-		.container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			align-items: center;
-			padding: 50px;
-		}
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px;
+      }
 
-		.container img {
-      max-width: 50%;
-      height: auto;
-    }
+      .container img {
+        max-width: 50%;
+        height: auto;
+      }
 
-		.container p {
-    flex: 1;
-    padding: 0 20px;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    text-align: justify;
-    color: white;
-  }
+      .container p {
+        flex: 1;
+        padding: 0 20px;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        text-align: justify;
+        color: white;
+      }
 
-		.interact {
-			color: #fff;
-			padding: 50px;
-			text-align: center;
-			font-size: 2rem;
-			font-weight: bold;
-		}
+      .interact {
+        color: #fff;
+        padding: 50px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
 
-		.psyche-container {
-			background-color: #000;
-			padding: 50px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-top: 50px;
-			width: 50%;
-			height: 400px;
-		}
+      .psyche-container {
+        background-color: #000;
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        width: 50%;
+        height: 400px;
+      }
 
-		canvas {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -1;
-		}
-	</style>
-</head>
-<body>
-	<header>Psyche Asteroid</header>
+      canvas {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
 
-	<div class="container">
-		<p>Psyche is a metallic asteroid located in the asteroid belt between Mars and Jupiter. It is believed to be the exposed core of a protoplanet that was destroyed by a collision with another object. Psyche is about 226 kilometers (140 miles) in diameter and is made mostly of iron and nickel. It is the most massive metallic M-type asteroid known in the solar system.</p>
-		<img src="psyche.png" alt="Psyche asteroid" title="Psyche asteroid" style="max-width: 38%; height: auto;">
-	</div>
+      .mythology-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px;
+      }
 
-	<div class="interact">Interact with the Psyche Asteroid yourself!</div>
+      .mythology-section video {
+        max-width: 50%;
+        height: auto;
+      }
 
-  <section class="psyche-container" style="display: flex; justify-content: center;">
-    <model-viewer src="psyche.glb" alt="Psyche asteroid in 3D" ar ar-modes="webxr scene-viewer quick-look" camera-controls style="width: 100%; height: 100%;"></model-viewer>
-  </section>
-  
+      .mythology-section p {
+        flex: 1;
+        padding: 0 20px;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        text-align: justify;
+        color: white;
+      }
 
-	<canvas id="background"></canvas>
+      @media screen and (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
 
-	<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.0.2/dist/model-viewer.min.js"></script>
-</body>
-</html>
+        .container img {
+          max-width: 80%;
+        }
+
+        .mythology-section {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .mythology-section video {
+          max-width: 80%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>The Psyche Asteroid</header>
+
+    <div class="container">
+      <p>
+        Psyche is a metallic asteroid located in the asteroid belt between Mars
+        and Jupiter. It is believed to be the exposed core of a protoplanet that
+        was destroyed by a collision with another object. Psyche is about 226
+        kilometers (140 miles) in diameter and is made mostly of iron and
+        nickel. It is the most massive metallic M-type asteroid known in the
+        solar system.
+      </p>
+      <img
+        src="psyche.png"
+        alt="Psyche asteroid"
+        title="Psyche asteroid"
+        style="max-width: 38%; height: auto;"
+      />
+    </div>
+
+    <div class="interact">Interact with the Psyche Asteroid yourself!</div>
+    <section class="psyche-container">
+      <model-viewer
+        src="psyche.glb"
+        alt="Psyche asteroid in 3D"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        style="width: 100%; height: 100%;"
+      ></model-viewer>
+    </section>
+    
+    <div class="mythology">
+      <div class="mythology-video">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Gjj_-CPxjCM"
+          title="Psyche - Greek Mythology"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="mythology-text">
+        <h2>Psyche in Greek Mythology</h2>
+        <p>
+          According to Greek mythology, Psyche was a mortal woman who was so
+          beautiful that she was worshipped as a goddess. She was beloved by
+          the god of love, Eros (also known as Cupid), but their love was not
+          permitted by his mother, the goddess Aphrodite. Psyche was forced to
+          perform several tasks to prove her worthiness to be with Eros,
+          including a journey to the underworld. In the end, the gods granted
+          Psyche immortality so that she could be with Eros forever.
+        </p>
+      </div>
+    </div>
+    
+    <canvas id="background"></canvas>
+    
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.0.2/dist/model-viewer.min.js"></script>
+  </body>
+  </html>
+    
