@@ -112,6 +112,11 @@ header .logo .divider {
   vertical-align: middle;
   background-color: #666;
 }
+#player {
+  margin: 0 auto;
+  width: 80%;
+  background-color: black;
+}
 
 .countdown-wrapper {
   display: flex;
