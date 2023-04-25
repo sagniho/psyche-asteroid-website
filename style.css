@@ -13,8 +13,9 @@ body {
 }
 /* Add padding to sections */
 main section {
-  padding: 2rem 0;
+  padding: 2rem 3rem; /* 2rem for top/bottom, 3rem for left/right */
 }
+
 /* Make the video full-width */
 #player {
   position: relative;
