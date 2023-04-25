@@ -10,47 +10,23 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: 'DM Mono', monospace;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem;
-        }
-        nav {
-            display: flex;
-        }
-        nav a {
+        .home-link {
             color: purple;
-            margin-left: 1rem;
+            position: absolute;
+            right: 0;
+            margin-right: 15px;
             text-decoration: none;
         }
-        main {
-            padding: 2rem;
+        
+        main > section {
+            padding: 2em 0;
         }
-        section {
-            margin-bottom: 2rem;
-        }
-        iframe {
+        
+        video {
+            width: 100%;
             display: block;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-        footer {
-            background-color: #f0f0f0;
-            padding: 1rem;
-            text-align: center;
-        }
-        .logo img {
-            max-height: 3rem;
-        }
-        .divider {
-            margin: 0 0.5rem;
         }
     </style>
 </head>
@@ -66,9 +42,7 @@
                     <img src="https://psyche.asu.edu/wp-content/themes/psyche/static/img/psyche.svg" alt="Psyche">
                 </a>
             </div>
-            <nav>
-                <a href="https://missiontopsyche.github.io/2022_17a_vis_psyche/">Home</a>
-            </nav>
+            <a class="home-link" href="https://missiontopsyche.github.io/2022_17a_vis_psyche/">Home</a>
         </div>
 	</header>
 
@@ -89,8 +63,7 @@
         <section id="section3">
             <h2>Section 3: Origins in Greek Mythology</h2>
             <p>
-                Psyche is a unique asteroid that holds clues to the violent collisions that created Earth and other terrestrial planets. The name "Psyche" is derived from the Greek mythological figure of the same
-                name. In Greek mythology, Psyche was a mortal woman who became the wife of Eros (Cupid), the god of love, and was ultimately granted immortality.
+                Psyche is a unique asteroid that holds clues to the violent collisions that created Earth and other terrestrial planets. The name "Psyche" is derived from the Greek mythological figure of the same name. In Greek mythology, Psyche was a mortal woman who became the wife of Eros (Cupid), the god of love, and was ultimately granted immortality.
             </p>
         </section>
 
@@ -102,16 +75,15 @@
     </main>
 
     <footer>
-      <!-- <div class="container d-flex align-items-center"> -->
-          <h3><strong>PSYCHE /</strong> Journey To A Metal World</h3>
-      <!-- </div> -->
+      <h3><strong>PSYCHE /</strong> Journey To A Metal World</h3>
       <p>This work was created in partial fulfillment of Arizona State University Capstone Course CSE 485/486. 
-        The work is a result of the Psyche Student Collaborations component of NASA's Psyche Mission (<a href="https://psyche.asu.edu">https://psyche.asu.edu</a>). “Psyche: A Journey to a Metal World” [Contract number NNM16AA09C] is part of the NASA Discovery Program mission to solar system targets. 
-        Trade names and trademarks of ASU and NASA are used in this work for identification only. Their usage does not constitute an official endorsement, either expressed or implied, by Arizona State University or National Aeronautics and Space Administration. 
-        The content is solely the responsibility of the authors and does not necessarily represent the official views of ASU or NASA.</p>
-</footer>
+          The work is a result of the Psyche Student Collaborations component of NASA's Psyche Mission (<a href="https://psyche.asu.edu">https://psyche.asu.edu</a>). “Psyche: A Journey to a Metal World” [Contract number NNM16AA09C] is part of the NASA Discovery Program mission to solar system targets. 
+          Trade names and trademarks of ASU and NASA are used in this work for identification only. Their usage does not constitute an official endorsement, either expressed or implied, by Arizona State University or National Aeronautics and Space Administration. 
+          The content is solely the responsibility of the authors and does not necessarily represent the official views of ASU or NASA.</p>
+  </footer>
 </body>
 </html>
+
 
 <!--DOCTYPE html>
 <html>
