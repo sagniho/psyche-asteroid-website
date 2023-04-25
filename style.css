@@ -12,9 +12,10 @@ body {
   margin: 0;
 }
 /* Add padding to sections */
-main section {
-  padding: 2rem 3rem; /* 2rem for top/bottom, 3rem for left/right */
+main > section {
+  padding: 2em 3em; /* 2em for top/bottom, 3em for left/right */
 }
+
 
 /* Make the video full-width */
 #player {

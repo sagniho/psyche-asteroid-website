@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psyche</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         .home-link {
@@ -19,48 +19,27 @@
             margin-right: 15px;
             text-decoration: none;
         }
-        
+
         main > section {
             padding: 2em 0;
         }
-        
+
         video {
             width: 100%;
             display: block;
         }
     </style>
-</head>
-<body>
-  <header>
-		<div class="container d-flex align-items-left">
-            <div class="logo">
-                <a  href="https://www.nasa.gov/" rel="noopener">
-                    <img src="https://psyche.asu.edu/wp-content/themes/psyche/static/img/nasa.svg" alt="NASA">
-                </a>
-                <span class="divider"></span>
-                <a href="https://psyche.asu.edu/">
-                    <img src="https://psyche.asu.edu/wp-content/themes/psyche/static/img/psyche.svg" alt="Psyche">
-                </a>
-            </div>
-            <a class="home-link" href="https://missiontopsyche.github.io/2022_17a_vis_psyche/">Home</a>
-        </div>
-	</header>
+    <!-- YouTube API script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player;
 
-    <main>
-        <section id="section1">
-            <h2>Section 1: Video</h2>
-            <div id="player"></div>
-            <!-- YouTube API script -->
-            <script src="https://www.youtube.com/iframe_api"></script>
-            <script>
-              var player;
-
-              function onYouTubeIframeAPIReady() {
-                player = new YT.Player('player', {
-                  height: '100%',
-                  width: '100%',
-                  videoId: 'cS-SlJ_YjP0',
-                  playerVars: {
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'cS-SlJ_YjP0',
+                playerVars: {
                     'autoplay': 1,
                     'controls': 0,
                     'loop': 1,
@@ -71,49 +50,35 @@
                     'disablekb': 1,
                     'enablejsapi': 1,
                     'playsinline': 1,
-                  },
-                  events: {
+                },
+                events: {
                     'onReady': onPlayerReady,
-                  },
-                });
-              }
+                },
+            });
+        }
 
-              function onPlayerReady(event) {
-                event.target.playVideo();
-              }
-            </script>
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+    </script>
+</head>
+<body>
+<header>
+    <div class="container d-flex align-items-left">
+        <div class="logo">
+            <a href="https://www.nasa.gov/" rel="noopener">
+                <img src="https://psyche.asu.edu/wp-content/themes/psyche/static/img/nasa.svg" alt="NASA">
+            </a>
+            <span class="divider"></span>
+            <a href="https://psyche.asu.edu/">
+                <img src="https://psyche.asu.edu/wp-content/themes/psyche/static/img/psyche.svg" alt="Psyche">
+            </a>
+        </div>
+        <a class="home-link" href="https://missiontopsyche.github.io/2022_17a_vis_psyche/">Home</a>
+    </div>
+</header>
 
-        </section>
 
-        <section id="section2">
-            <h2>3D Psyche Satellite Viewer</h2>
-            <!-- Add your 3D viewer content here -->
-            <p>Embed or link to the 3D viewer here.</p>
-        </section>
-
-        <section id="section3">
-            <h2>Origins in Greek Mythology</h2>
-            <p>
-                Psyche is a unique asteroid that holds clues to the violent collisions that created Earth and other terrestrial planets. The name "Psyche" is derived from the Greek mythological figure of the same name. In Greek mythology, Psyche was a mortal woman who became the wife of Eros (Cupid), the god of love, and was ultimately granted immortality.
-            </p>
-        </section>
-
-        <section id="section4">
-            <h2>Psyche Viewer</h2>
-            <!-- Add your Psyche viewer content here -->
-            <p>Embed or link to the Psyche viewer here.</p>
-        </section>
-    </main>
-
-    <footer>
-      <h3><strong>PSYCHE /</strong> Journey To A Metal World</h3>
-      <p>This work was created in partial fulfillment of Arizona State University Capstone Course CSE 485/486. 
-          The work is a result of the Psyche Student Collaborations component of NASA's Psyche Mission (<a href="https://psyche.asu.edu">https://psyche.asu.edu</a>). “Psyche: A Journey to a Metal World” [Contract number NNM16AA09C] is part of the NASA Discovery Program mission to solar system targets. 
-          Trade names and trademarks of ASU and NASA are used in this work for identification only. Their usage does not constitute an official endorsement, either expressed or implied, by Arizona State University or National Aeronautics and Space Administration. 
-          The content is solely the responsibility of the authors and does not necessarily represent the official views of ASU or NASA.</p>
-  </footer>
-</body>
-</html>
 
 
 <!--DOCTYPE html>
