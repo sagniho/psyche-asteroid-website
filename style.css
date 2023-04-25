@@ -11,6 +11,10 @@ body {
   height: 100%;
   margin: 0;
 }
+/* Add padding to sections */
+main section {
+  padding: 2rem 0;
+}
 
 .main{
   /* height: 100%; */
