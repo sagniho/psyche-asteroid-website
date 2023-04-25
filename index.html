@@ -12,6 +12,11 @@
       <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://www.youtube.com/iframe_api"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.0.2/dist/model-viewer.min.js"></script>
+     
+
     <style>
         .home-link {
             color: purple;
@@ -90,17 +95,47 @@
         </section>
 
         <section class="model-section">
-         
-              <h2>Origins in Greek Mythology</h2>
+          <h2>Origins in Greek Mythology</h2>
+          <div class="container-fluid d-flex align-items-center">
               <p>
                   Psyche is a unique asteroid that holds clues to the violent collisions that created Earth and other terrestrial planets. The name "Psyche" is derived from the Greek mythological figure of the same name. In Greek mythology, Psyche was a mortal woman who became the wife of Eros (Cupid), the god of love, and was ultimately granted immortality.
               </p>
-            
+            </div>
         </section>
 
         <section id="section4">
             <h2>Psyche Viewer</h2>
             <!-- Add your Psyche viewer content here -->
+            <section class="model-section">
+              <div class="container-fluid d-flex align-items-center">
+                  <div class="model-wrapper">
+                      <div class="text-wrapper">
+                                  <h2>The Spacecraft</h2>
+                                  <p>The Psyche spacecraft and solar panels, which will be built by Maxar Technologies, are about the size of a singles tennis court. The body of the spacecraft is slightly bigger than a Smart Car and about as tall as a regulation basketball hoop. The spacecraft will include a Gamma Ray and Neutron Spectrometer, a Multispectral Imager, a Magnetometer and an x-band radio telecommunications system.</p>
+                              
+                      </div>
+                      
+                      <div class="psyche-wrapper">
+                      
+                          
+                        <model-viewer
+                        src="psyche.glb"
+                        alt="Psyche asteroid in 3D"
+                        ar
+                        ar-modes="webxr scene-viewer quick-look"
+                        camera-controls
+                        style="width: 100%; height: 100%;"
+                      ></model-viewer>
+                          <div class="model-caption">3D model of PSYCHE satellite, a mission to explore asteroid 16 Psyche. Credit: NASA Visualization Technology Applications and Development</div>
+                      </div>
+                      
+                  </div>
+              </div>
+          </section>
+
+
+
+
             <p>Embed or link to the Psyche viewer here.</p>
         </section>
     </main>
